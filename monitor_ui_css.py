@@ -1,14 +1,15 @@
-from tkinter import Tk, Frame, X, Text, filedialog, Label, messagebox, scrolledtext
+from tkinter import Tk, Frame, X, Text, filedialog, Label, messagebox, scrolledtext, PhotoImage
 from tkinter.ttk import Button
 from tkinter.constants import END
 from monitor_script import MonitorVentas
+import os
 class CcsUi:
     def __init__(self):
         self.ccs_ui=Tk()
         self.watchdog = None
         self.folder_selected = None
-        #imgicon = PhotoImage(file=os.path.join('kiwi.gif')) 
-        #self.ccs_ui.tk.call('wm', 'iconphoto', self.ccs_ui._w, imgicon) 
+        imgicon = PhotoImage(file=os.path.join('ccs.png')) 
+        self.ccs_ui.tk.call('wm', 'iconphoto', self.ccs_ui._w, imgicon) 
         
         ancho_windows=self.ccs_ui.winfo_screenwidth()
         alto_windows=self.ccs_ui.winfo_screenheight()
