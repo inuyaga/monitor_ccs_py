@@ -1,0 +1,28 @@
+{
+  "empresa": "Computel SA de CV",
+  "fecha_imprime": "07/10/2021 14:38:33",
+  "fecha_creacion": "07/10/2021 14:38:33",
+  "ruta": "014",
+  "clave_vendedor": "MGR",
+  "cert_edicion": "04",
+  "cert_fecha": "31/05/2013",
+  "cert_codigo": "PPD-CCS-VE-R01",
+  "cliente": {
+    "numero_cliente": "022350",
+    "rfc": "COM070419015"
+  },
+  "partidas": [
+    {
+      "cantidad": 5,
+      "unidad": "PIEZA",
+      "codigo": "600-616-002",
+      "descripcion": "CINTA P/EMPAQUE CANELA 48X50"
+    },
+    {
+      "cantidad": 2,
+      "unidad": "CAJA",
+      "codigo": "305-191-006",
+      "descripcion": "marcador p/pizarron c/04"
+    }
+  ]
+}

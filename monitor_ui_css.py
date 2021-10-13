@@ -3,6 +3,7 @@ from tkinter.ttk import Button
 from tkinter.constants import END
 from monitor_script import MonitorVentas
 import os
+import logging
 class CcsUi:
     def __init__(self):
         self.ccs_ui=Tk()
@@ -60,5 +61,7 @@ class CcsUi:
         self.txt_scaner.insert(END, f"{message}\n")
         self.txt_scaner.configure(state='disabled')
         self.txt_scaner.see(END)
+        logging.basicConfig(filename='scaner.log', format='%(asctime)s : %(levelname)s : %(message)s',filemode='a')
+        logging.log(20, message)
 
 api=CcsUi()

@@ -2,6 +2,7 @@ from watchdog.observers import Observer
 from watchdog.events import PatternMatchingEventHandler
 from pathlib import Path
 import json
+from request_appi import AppiResponseMonitor
 class MonitorVentas(PatternMatchingEventHandler, Observer):
     def __init__(self, path='.', patterns='*', logfunc=print):
         PatternMatchingEventHandler.__init__(self, patterns)
@@ -11,12 +12,12 @@ class MonitorVentas(PatternMatchingEventHandler, Observer):
 
     def on_created(self, event):
         # This function is called when a file is created
-        extencion = Path(event.src_path).suffix
-        if extencion == ".txt":
-            archivo_txt = Path(event.src_path).name
-            self.log(f"{archivo_txt} ¡Agregado!")
-            path = Path(event.src_path)
-            self.load_json(path)
+        path = Path(event.src_path)
+        if path.suffix == ".txt":
+            self.log(f"{path.name} ¡Agregado!")
+            # self.load_json(path)
+            response_api = AppiResponseMonitor(path).send()
+            print(response_api)
     
     def load_json(self, ruta):
         f = open(ruta, "r")
