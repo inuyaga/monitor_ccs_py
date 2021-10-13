@@ -57,11 +57,11 @@ class CcsUi:
         else:
             self.log('El servicio no esta iniciado')
     def log(self, message):
+        logging.basicConfig(filename='log_scaner_css.log', format='%(asctime)s : %(levelname)s : %(message)s',filemode='a', level=logging.INFO)
+        logging.info(message)
         self.txt_scaner.configure(state='normal')
         self.txt_scaner.insert(END, f"{message}\n")
         self.txt_scaner.configure(state='disabled')
         self.txt_scaner.see(END)
-        logging.basicConfig(filename='scaner.log', format='%(asctime)s : %(levelname)s : %(message)s',filemode='a')
-        logging.log(20, message)
 
 api=CcsUi()
