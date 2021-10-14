@@ -2,7 +2,7 @@
 import requests
 import json
 import logging
-
+from requests.exceptions import RequestException
 
 class AppiResponseMonitor:
     """
@@ -28,8 +28,9 @@ class AppiResponseMonitor:
                 json_read = json.load(file)
                 request_server = requests.post(self.url_request, json=json_read)
         except FileNotFoundError as error:
-            logging.basicConfig(filename='venta.log', format='%(asctime)s : %(levelname)s : %(message)s',filemode='a')
             logging.error(str(error))
+        except RequestException as r_error:
+            logging.fatal(f"{self.ruta_file} error al enviar al servidor")
         return request_server
 
 

@@ -19,9 +19,9 @@ class MonitorVentas(PatternMatchingEventHandler, Observer):
             response_api = AppiResponseMonitor(path).send()
             print(response_api)
     
-    def load_json(self, ruta):
-        f = open(ruta, "r")
-        content = f.read()
-        jsondecoded = json.loads(content)
-        for key, value in jsondecoded.items():
-            print(f"{key}: {value}")
+    # def load_json(self, ruta):
+    #     f = open(ruta, "r")
+    #     content = f.read()
+    #     jsondecoded = json.loads(content)
+    #     for key, value in jsondecoded.items():
+    #         print(f"{key}: {value}")

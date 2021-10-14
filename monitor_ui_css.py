@@ -6,6 +6,7 @@ import os
 import logging
 class CcsUi:
     def __init__(self):
+        logging.basicConfig(filename='log_scaner_css.log', format='%(asctime)s : %(levelname)s : %(message)s',filemode='a')
         self.ccs_ui=Tk()
         self.watchdog = None
         self.folder_selected = None
@@ -56,9 +57,8 @@ class CcsUi:
             self.log('Servicio detenido')
         else:
             self.log('El servicio no esta iniciado')
-    def log(self, message):
-        logging.basicConfig(filename='log_scaner_css.log', format='%(asctime)s : %(levelname)s : %(message)s',filemode='a', level=logging.INFO)
-        logging.info(message)
+    def log(self, message):        
+        # logging.warning(message)
         self.txt_scaner.configure(state='normal')
         self.txt_scaner.insert(END, f"{message}\n")
         self.txt_scaner.configure(state='disabled')
