@@ -3,12 +3,12 @@ import requests
 import json
 import logging
 from requests.exceptions import RequestException
-
+from pathlib import Path
 class AppiResponseMonitor:
     """
     Clase definida para monitor de ventas
     """
-    def __init__(self, ruta_archivo:str, url:str='http://127.0.0.1:8000/almacen/crear/'):
+    def __init__(self, ruta_archivo:Path, url:str='http://127.0.0.1:8000/almacen/crear/'):
         """
         Args:
             ruta_archivo (str): Ruta absoluta
@@ -27,6 +27,8 @@ class AppiResponseMonitor:
             with open(self.ruta_file) as file:
                 json_read = json.load(file)
                 request_server = requests.post(self.url_request, json=json_read)
+            if request_server.status_code == 200 or request_server.status_code == 201:
+                self.ruta_file.unlink()
         except FileNotFoundError as error:
             logging.error(str(error))
         except RequestException as r_error:
